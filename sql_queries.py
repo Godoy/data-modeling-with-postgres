@@ -8,7 +8,6 @@ time_table_drop = "DROP TABLE IF EXISTS time;"
 
 # CREATE TABLES
 
-
 songplay_table_create = ("""
     CREATE TABLE songplays (songplay_id SERIAL PRIMARY KEY, start_time TIMESTAMP, user_id INT, level TEXT, song_id TEXT, artist_id TEXT, session_id INT, location TEXT, user_agent TEXT)
 """)
@@ -20,7 +19,6 @@ user_table_create = ("""
 song_table_create = ("""
     CREATE TABLE songs (song_id TEXT PRIMARY KEY, title TEXT, duration DECIMAL, year INT, artist_id TEXT NULL);
 """)
-# CONSTRAINT fk_artist FOREIGN KEY(artist_id) REFERENCES artists(id)
 
 artist_table_create = ("""
     CREATE TABLE artists (artist_id TEXT PRIMARY KEY, name TEXT, latitude TEXT, longitude TEXT, location TEXT);
@@ -37,12 +35,12 @@ songplay_table_insert = ("""
 """)
 
 user_table_insert = ("""
-    INSERT INTO users (user_id, first_name, gender, last_name, level) VALUES (%s, %s, %s, %s, %s) 
+    INSERT INTO users (user_id, first_name, gender, last_name, level) VALUES (%s, %s, %s, %s, %s)
     ON CONFLICT (user_id) DO NOTHING;
 """)
 
 song_table_insert = ("""
-    INSERT INTO songs (song_id, title, duration, year, artist_id) VALUES (%s, %s, %s, %s, %s) 
+    INSERT INTO songs (song_id, title, duration, year, artist_id) VALUES (%s, %s, %s, %s, %s)
     ON CONFLICT (song_id) DO NOTHING;
 """)
 
@@ -52,7 +50,7 @@ artist_table_insert = ("""
 """)
 
 time_table_insert = ("""
-    INSERT INTO time (start_time, hour, day, week, month, year, weekday) VALUES (%s, %s, %s, %s, %s, %s, %s) 
+    INSERT INTO time (start_time, hour, day, week, month, year, weekday) VALUES (%s, %s, %s, %s, %s, %s, %s)
     ON CONFLICT (start_time) DO NOTHING;
 """)
 
@@ -62,7 +60,7 @@ song_select = ("""
     SELECT s.song_id songid, s.artist_id artistid
     FROM songs s
     LEFT JOIN artists a ON (s.artist_id = a.artist_id)
-    WHERE s.title = %s AND a.name = %s AND s.duration = %s 
+    WHERE s.title = %s AND a.name = %s AND s.duration = %s
 """)
 
 # QUERY LISTS

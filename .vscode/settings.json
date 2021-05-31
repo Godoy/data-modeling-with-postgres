@@ -1,4 +1,5 @@
 {
     "python.pythonPath": "/Users/u006397/.local/share/virtualenvs/data-modeling-with-postgres-7v7SwuLV/bin/python",
-    "jupyter.jupyterServerType": "local"
+    "jupyter.jupyterServerType": "local",
+    "python.linting.enabled": true
 }
