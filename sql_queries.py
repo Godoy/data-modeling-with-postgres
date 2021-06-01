@@ -9,7 +9,7 @@ time_table_drop = "DROP TABLE IF EXISTS time;"
 # CREATE TABLES
 
 songplay_table_create = ("""
-    CREATE TABLE songplays (songplay_id SERIAL PRIMARY KEY, start_time TIMESTAMP, user_id INT, level TEXT, song_id TEXT, artist_id TEXT, session_id INT, location TEXT, user_agent TEXT)
+    CREATE TABLE songplays (songplay_id SERIAL PRIMARY KEY, start_time TIMESTAMP NOT NULL, user_id INT NOT NULL, level TEXT, song_id TEXT, artist_id TEXT, session_id INT, location TEXT, user_agent TEXT)
 """)
 
 user_table_create = ("""
@@ -17,11 +17,11 @@ user_table_create = ("""
 """)
 
 song_table_create = ("""
-    CREATE TABLE songs (song_id TEXT PRIMARY KEY, title TEXT, duration DECIMAL, year INT, artist_id TEXT NULL);
+    CREATE TABLE songs (song_id TEXT PRIMARY KEY, title TEXT, duration DECIMAL, year INT, artist_id TEXT NOT NULL);
 """)
 
 artist_table_create = ("""
-    CREATE TABLE artists (artist_id TEXT PRIMARY KEY, name TEXT, latitude TEXT, longitude TEXT, location TEXT);
+    CREATE TABLE artists (artist_id TEXT PRIMARY KEY, name TEXT, latitude FLOAT, longitude FLOAT, location TEXT);
 """)
 
 time_table_create = ("""
